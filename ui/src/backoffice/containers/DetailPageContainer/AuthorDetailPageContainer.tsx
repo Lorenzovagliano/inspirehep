@@ -163,7 +163,10 @@ const AuthorDetailPageContainer = ({
                     </CollapsableForm.Section>
                     {(urls || ids) && (
                       <CollapsableForm.Section header="Links" key="links">
-                        <Links urls={urls} ids={ids} />
+                        <Links 
+                          urls={urls?.filter((link: Map<string, any>) => link?.get('schema') !== 'ORCID')} 
+                          ids={ids?.filter((link: Map<string, any>) => link?.get('schema') !== 'ORCID')} 
+                        />
                       </CollapsableForm.Section>
                     )}
                     <CollapsableForm.Section header="Other" key="other">
